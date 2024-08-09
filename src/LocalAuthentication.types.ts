@@ -1,4 +1,4 @@
-import { Platform } from 'expo-modules-core';
+import { Platform } from "expo-modules-core";
 
 export type LocalAuthenticationResult =
   | { success: true }
@@ -36,7 +36,7 @@ export enum SecurityLevel {
    * @deprecated please use `BIOMETRIC_STRONG` or `BIOMETRIC_WEAK` instead.
    * @hidden
    */
-  BIOMETRIC = Platform.OS === 'android'
+  BIOMETRIC = Platform.OS === "android"
     ? SecurityLevel.BIOMETRIC_WEAK
     : SecurityLevel.BIOMETRIC_STRONG,
   /**
@@ -50,17 +50,17 @@ export enum SecurityLevel {
   BIOMETRIC_STRONG = 3,
 }
 
-Object.defineProperty(SecurityLevel, 'BIOMETRIC', {
+Object.defineProperty(SecurityLevel, "BIOMETRIC", {
   get() {
     const additionalMessage =
-      Platform.OS === 'android'
-        ? '. `SecurityLevel.BIOMETRIC` is currently an alias for `SecurityLevel.BIOMETRIC_WEAK` on Android, which might lead to unexpected behaviour.'
-        : '';
+      Platform.OS === "android"
+        ? ". `SecurityLevel.BIOMETRIC` is currently an alias for `SecurityLevel.BIOMETRIC_WEAK` on Android, which might lead to unexpected behaviour."
+        : "";
     console.warn(
-      '`SecurityLevel.BIOMETRIC` has been deprecated. Please use `SecurityLevel.BIOMETRIC_WEAK` or `SecurityLevel.BIOMETRIC_STRONG` instead' +
+      "`SecurityLevel.BIOMETRIC` has been deprecated. Please use `SecurityLevel.BIOMETRIC_WEAK` or `SecurityLevel.BIOMETRIC_STRONG` instead" +
         additionalMessage
     );
-    return Platform.OS === 'android'
+    return Platform.OS === "android"
       ? SecurityLevel.BIOMETRIC_WEAK
       : SecurityLevel.BIOMETRIC_STRONG;
   },
@@ -70,7 +70,7 @@ Object.defineProperty(SecurityLevel, 'BIOMETRIC', {
  * Security level of the biometric authentication to allow.
  * @platform android
  */
-export type BiometricsSecurityLevel = 'weak' | 'strong';
+export type BiometricsSecurityLevel = "weak" | "strong";
 
 // @needsAudit
 export type LocalAuthenticationOptions = {
@@ -78,6 +78,14 @@ export type LocalAuthenticationOptions = {
    * A message that is shown alongside the TouchID or FaceID prompt.
    */
   promptMessage?: string;
+
+  /**
+   * A description that is shown below the promptMessage.
+   *
+   * Platform: android
+   */
+  description?: string;
+
   /**
    * Allows to customize the default `Cancel` label shown.
    */
