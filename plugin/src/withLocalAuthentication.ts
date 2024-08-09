@@ -6,6 +6,7 @@ import {
 } from "expo/config-plugins";
 
 const pkg = require("@bpm-sekeh/expo-local-authentication/package.json");
+
 const FACE_ID_USAGE = "Allow $(PRODUCT_NAME) to use Face ID";
 
 const withLocalAuthentication: ConfigPlugin<
