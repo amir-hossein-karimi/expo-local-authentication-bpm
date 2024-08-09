@@ -1,4 +1,4 @@
-import { Platform } from 'expo-modules-core';
+import { Platform } from "expo-modules-core";
 // @needsAudit
 export var AuthenticationType;
 (function (AuthenticationType) {
@@ -32,7 +32,7 @@ export var SecurityLevel;
      * @deprecated please use `BIOMETRIC_STRONG` or `BIOMETRIC_WEAK` instead.
      * @hidden
      */
-    SecurityLevel[SecurityLevel["BIOMETRIC"] = Platform.OS === 'android'
+    SecurityLevel[SecurityLevel["BIOMETRIC"] = Platform.OS === "android"
         ? SecurityLevel.BIOMETRIC_WEAK
         : SecurityLevel.BIOMETRIC_STRONG] = "BIOMETRIC";
     /**
@@ -45,14 +45,14 @@ export var SecurityLevel;
      */
     SecurityLevel[SecurityLevel["BIOMETRIC_STRONG"] = 3] = "BIOMETRIC_STRONG";
 })(SecurityLevel || (SecurityLevel = {}));
-Object.defineProperty(SecurityLevel, 'BIOMETRIC', {
+Object.defineProperty(SecurityLevel, "BIOMETRIC", {
     get() {
-        const additionalMessage = Platform.OS === 'android'
-            ? '. `SecurityLevel.BIOMETRIC` is currently an alias for `SecurityLevel.BIOMETRIC_WEAK` on Android, which might lead to unexpected behaviour.'
-            : '';
-        console.warn('`SecurityLevel.BIOMETRIC` has been deprecated. Please use `SecurityLevel.BIOMETRIC_WEAK` or `SecurityLevel.BIOMETRIC_STRONG` instead' +
+        const additionalMessage = Platform.OS === "android"
+            ? ". `SecurityLevel.BIOMETRIC` is currently an alias for `SecurityLevel.BIOMETRIC_WEAK` on Android, which might lead to unexpected behaviour."
+            : "";
+        console.warn("`SecurityLevel.BIOMETRIC` has been deprecated. Please use `SecurityLevel.BIOMETRIC_WEAK` or `SecurityLevel.BIOMETRIC_STRONG` instead" +
             additionalMessage);
-        return Platform.OS === 'android'
+        return Platform.OS === "android"
             ? SecurityLevel.BIOMETRIC_WEAK
             : SecurityLevel.BIOMETRIC_STRONG;
     },
